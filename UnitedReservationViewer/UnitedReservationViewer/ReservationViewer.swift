@@ -54,25 +54,20 @@ struct ReservationViewer: View {
                 } else {
                     VStack {
                         List {
-                            Section {
-                                HStack {
-                                    Text("Confirmation")
-                                    Spacer()
-                                    Text(reservation?.recordLocator ?? "Error")
-                                }
-                                HStack {
-                                    Text("^[\(Int(reservation?.pnr?.numberOfPassengers ?? "1") ?? 1) passenger](inflect: true)")
-                                }
-                            }
-                            Text("Passengers")
+                            Text("Passengers (\(reservation?.pnr?.numberOfPassengers ?? "1"))")
                                 .bold()
                             Section {
                                 ReservationViewerPassengers(reservation: reservation)
                             }
-                            Text("Segments")
+                            Text("Segments (\(reservation?.pnr?.segments.count ?? 1))")
                                 .bold()
                             Section {
                                 ReservationViewerSegments(reservation: reservation)
+                            }
+                            Text("Seat Assignments")
+                                .bold()
+                            Section {
+                                ReservationViewerSeats(reservation: reservation)
                             }
                             Text("Ticket Details")
                                 .bold()
@@ -83,7 +78,7 @@ struct ReservationViewer: View {
                     }
                 }
             }
-            .navigationTitle("PNR Viewer")
+            .navigationTitle(status == 2 ? "United \(lookupInfo[0].uppercased())" : "PNR Viewer")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     if status == 2 {
@@ -167,6 +162,35 @@ struct ReservationViewerSegments: View {
                 Text(String(format: "%1$@ %2$@ operated by %3$@", reservation?.pnr?.segments[num].codeshareCarrier.code ?? "Unknown", reservation?.pnr?.segments[num].codeshareCarrier.flightNumber ?? "Unknown", reservation?.pnr?.segments[num].operationoperatingCarrier.name ?? "Unknown"))
                 Text(reservation?.pnr?.segments[num].aircraft.longName ?? "Unknown")
                 Text(String(format: "%1$@ (%2$@)", reservation?.pnr?.segments[num].classOfServiceDescription ?? "ERR", reservation?.pnr?.segments[num].classOfService ?? "ERR"))
+            }
+        }
+    }
+}
+
+struct ReservationViewerSeats: View {
+    var reservation: UnitedReservationContent?
+    
+    var body: some View {
+        ForEach(0..<(reservation?.pnr?.segments.count ?? 0), id: \.self) { seg_num in
+            VStack(alignment: .leading) {
+                Text(String(format: "%1$@ → %2$@\n", reservation?.pnr?.segments[seg_num].departure.code ?? "ERR", reservation?.pnr?.segments[seg_num].arrival.code ?? "ERR"))
+                ReservationViewerSeatsSegment(reservation: reservation, segment_number: seg_num)
+            }
+            .padding(.leading)
+        }
+    }
+}
+
+struct ReservationViewerSeatsSegment: View {
+    var reservation: UnitedReservationContent?
+    var segment_number: Int
+    
+    var body: some View {
+        ForEach(0..<(reservation?.pnr?.passengers.count ?? 0), id: \.self) { pax_num in
+            HStack {
+                Text(String(format: "%2$@/%1$@", reservation?.pnr?.passengers[pax_num].passengerName.first ?? "Unknown", reservation?.pnr?.passengers[pax_num].passengerName.last ?? "Unknown"))
+                Spacer()
+                Text(String(format: "%1$@", reservation?.pnr?.segments[segment_number].seats[pax_num].number.uppercased() ?? "N/A"))
             }
         }
     }

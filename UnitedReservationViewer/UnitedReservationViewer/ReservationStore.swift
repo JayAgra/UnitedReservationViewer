@@ -34,7 +34,21 @@ extension UserDefaults {
             let decoder = PropertyListDecoder()
             do {
                 let reservations = try decoder.decode([ReservationStore].self, from: data)
-                return reservations
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "M/d/yyyy h:mm a"
+                dateFormatter.locale = Locale(identifier: "en_US")
+                
+                let sortedValues = reservations.sorted { (departure1, departure2) -> Bool in
+                    guard let dateString1 = departure1.unitedReservation.pnr?.segments.first?.scheduledDepartureDateTime,
+                          let dateString2 = departure2.unitedReservation.pnr?.segments.first?.scheduledDepartureDateTime,
+                          let date1 = dateFormatter.date(from: dateString1),
+                          let date2 = dateFormatter.date(from: dateString2) else {
+                        return false
+                    }
+                    print("ds1: \(dateString1)\nds2: \(dateString2)\nd1: \(date1)\nd2: \(date2)")
+                    return date1 < date2
+                }
+                return sortedValues
             } catch {
                 print("Failed to decode reservations: \(error)")
                 return []
@@ -45,13 +59,18 @@ extension UserDefaults {
             do {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "M/d/yyyy h:mm a"
+                dateFormatter.locale = Locale(identifier: "en_US")
                 let sortedValues = newValue.sorted { (departure1, departure2) -> Bool in
-                    if let date1 = dateFormatter.date(from: departure1.unitedReservation.pnr?.segments.first?.scheduledDepartureDateTime ?? "12/31/9999 11:59 PM"), let date2 = dateFormatter.date(from: departure2.unitedReservation.pnr?.segments.first?.scheduledDepartureDateTime ?? "12/31/9999 11:59 PM") {
-                        return date1 < date2
+                    guard let dateString1 = departure1.unitedReservation.pnr?.segments.first?.scheduledDepartureDateTime,
+                          let dateString2 = departure2.unitedReservation.pnr?.segments.first?.scheduledDepartureDateTime,
+                          let date1 = dateFormatter.date(from: dateString1),
+                          let date2 = dateFormatter.date(from: dateString2) else {
+                        return false
                     }
-                    return false
+                    print("ds1: \(dateString1)\nds2: \(dateString2)\nd1: \(date1)\nd2: \(date2)")
+                    return date1 < date2
                 }
-                let data = try encoder.encode(newValue)
+                let data = try encoder.encode(sortedValues)
                 UserDefaults.standard.set(data, forKey: "savedReservations")
             } catch {
                 print("Failed to encode reservations: \(error)")

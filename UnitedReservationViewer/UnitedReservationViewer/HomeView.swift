@@ -24,11 +24,7 @@ struct HomeView: View {
                                 ReservationViewer(reservation: nil, lookupInfo: [res.unitedReservation.recordLocator ?? "ERROR0", res.unitedReservation.lastName ?? "Error"], status: 1)
                             }, label: {
                                 VStack(alignment: .leading) {
-                                    HStack {
-                                        Text("United")
-                                        Spacer()
-                                        Text(res.unitedReservation.recordLocator ?? "ERROR0")
-                                    }
+                                    Text(res.unitedReservation.recordLocator ?? "ERROR0")
                                     Text(String(format: "\n%1$@ to %2$@", res.unitedReservation.pnr?.segments.first?.departure.city ?? "N/A",  res.unitedReservation.pnr?.segments.first?.arrival.city ?? "N/A"))
                                     Text(res.unitedReservation.pnr?.segments.first?.scheduledDepartureDateTime ?? "N/A")
                                     Text("^[\n\(Int(res.unitedReservation.pnr?.numberOfPassengers ?? "1") ?? 1) passenger](inflect: true)")
@@ -37,14 +33,20 @@ struct HomeView: View {
                         }
                     }
                 }
-                NavigationLink(destination: ReservationViewer(), label: {
-                    Label("Look up a reservation", systemImage: "magnifyingglass")
-                        .labelStyle(.titleOnly)
-                })
             }
             .navigationTitle("Reservations")
             .refreshable {
                 savedReservations = UserDefaults.standard.savedReservations
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(destination: {
+                        ReservationViewer()
+                    }, label: {
+                        Label("Look up a reservation", systemImage: "magnifyingglass")
+                            .labelStyle(.iconOnly)
+                    })
+                }
             }
         }
         .refreshable {
