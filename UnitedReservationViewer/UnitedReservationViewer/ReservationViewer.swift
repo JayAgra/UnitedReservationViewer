@@ -173,10 +173,9 @@ struct ReservationViewerSeats: View {
     var body: some View {
         ForEach(0..<(reservation?.pnr?.segments.count ?? 0), id: \.self) { seg_num in
             VStack(alignment: .leading) {
-                Text(String(format: "%1$@ → %2$@\n", reservation?.pnr?.segments[seg_num].departure.code ?? "ERR", reservation?.pnr?.segments[seg_num].arrival.code ?? "ERR"))
+                Text(String(format: "%1$@ → %2$@ (%3$@)\n", reservation?.pnr?.segments[seg_num].departure.code ?? "ERR", reservation?.pnr?.segments[seg_num].arrival.code ?? "ERR", reservation?.pnr?.segments[seg_num].flightTime ?? "00H 00M"))
                 ReservationViewerSeatsSegment(reservation: reservation, segment_number: seg_num)
             }
-            .padding(.leading)
         }
     }
 }
