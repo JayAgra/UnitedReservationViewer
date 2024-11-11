@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ReservationContent: Codable {
+public struct UnitedReservationContent: Codable {
     var shareReservationInfo: String?
     var showJoinOneClickEnrollment: Bool?
     var deviceId: String?

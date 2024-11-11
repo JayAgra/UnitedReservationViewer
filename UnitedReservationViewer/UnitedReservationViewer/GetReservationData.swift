@@ -7,7 +7,7 @@
 
 import Foundation
 
-func loadPnr(confirmation: String, lastName: String, completionBlock: @escaping (ReservationContent?) -> Void) {
+func loadPnr(confirmation: String, lastName: String, completionBlock: @escaping (UnitedReservationContent?) -> Void) {
     guard let url = URL(string: "https://mobileshopapi.united.com/managereservationservice/api/ManageReservation/GetPNRByRecordLocatorV2") else { return }
     
     let requestData: [String: Any] = [
@@ -51,7 +51,7 @@ func loadPnr(confirmation: String, lastName: String, completionBlock: @escaping 
         if let data = data {
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(ReservationContent.self, from: data)
+                let result = try decoder.decode(UnitedReservationContent.self, from: data)
                 DispatchQueue.main.async {
                     completionBlock(result)
                 }

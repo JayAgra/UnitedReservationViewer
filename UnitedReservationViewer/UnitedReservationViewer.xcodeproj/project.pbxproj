@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F50814362CE2966000C8FC8F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50814352CE2966000C8FC8F /* HomeView.swift */; };
+		F50814382CE296CA00C8FC8F /* ReservationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50814372CE296CA00C8FC8F /* ReservationStore.swift */; };
 		F5D62C662CE1CCB4001C437B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D62C5F2CE1CCB4001C437B /* Preview Assets.xcassets */; };
 		F5D62C672CE1CCB4001C437B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D62C612CE1CCB4001C437B /* Assets.xcassets */; };
-		F5D62C682CE1CCB4001C437B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D62C622CE1CCB4001C437B /* ContentView.swift */; };
-		F5D62C692CE1CCB4001C437B /* ReservationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D62C632CE1CCB4001C437B /* ReservationContent.swift */; };
+		F5D62C682CE1CCB4001C437B /* ReservationViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D62C622CE1CCB4001C437B /* ReservationViewer.swift */; };
+		F5D62C692CE1CCB4001C437B /* UnitedReservationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D62C632CE1CCB4001C437B /* UnitedReservationContent.swift */; };
 		F5D62C6A2CE1CCB4001C437B /* UnitedReservationViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D62C642CE1CCB4001C437B /* UnitedReservationViewerApp.swift */; };
 		F5DD6F8B2CE1E4A400D6A3CE /* GetReservationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD6F8A2CE1E4A400D6A3CE /* GetReservationData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F50814352CE2966000C8FC8F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F50814372CE296CA00C8FC8F /* ReservationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationStore.swift; sourceTree = "<group>"; };
 		F5D62C4A2CE1CC7A001C437B /* UnitedReservationViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitedReservationViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D62C5F2CE1CCB4001C437B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5D62C612CE1CCB4001C437B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F5D62C622CE1CCB4001C437B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F5D62C632CE1CCB4001C437B /* ReservationContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationContent.swift; sourceTree = "<group>"; };
+		F5D62C622CE1CCB4001C437B /* ReservationViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewer.swift; sourceTree = "<group>"; };
+		F5D62C632CE1CCB4001C437B /* UnitedReservationContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedReservationContent.swift; sourceTree = "<group>"; };
 		F5D62C642CE1CCB4001C437B /* UnitedReservationViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedReservationViewerApp.swift; sourceTree = "<group>"; };
 		F5DD6F8A2CE1E4A400D6A3CE /* GetReservationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReservationData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,9 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				F5D62C642CE1CCB4001C437B /* UnitedReservationViewerApp.swift */,
-				F5D62C632CE1CCB4001C437B /* ReservationContent.swift */,
+				F50814352CE2966000C8FC8F /* HomeView.swift */,
+				F5D62C622CE1CCB4001C437B /* ReservationViewer.swift */,
+				F5D62C632CE1CCB4001C437B /* UnitedReservationContent.swift */,
 				F5DD6F8A2CE1E4A400D6A3CE /* GetReservationData.swift */,
-				F5D62C622CE1CCB4001C437B /* ContentView.swift */,
+				F50814372CE296CA00C8FC8F /* ReservationStore.swift */,
 				F5D62C612CE1CCB4001C437B /* Assets.xcassets */,
 				F5D62C602CE1CCB4001C437B /* Preview Content */,
 			);
@@ -145,9 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5D62C682CE1CCB4001C437B /* ContentView.swift in Sources */,
-				F5D62C692CE1CCB4001C437B /* ReservationContent.swift in Sources */,
+				F5D62C682CE1CCB4001C437B /* ReservationViewer.swift in Sources */,
+				F5D62C692CE1CCB4001C437B /* UnitedReservationContent.swift in Sources */,
 				F5D62C6A2CE1CCB4001C437B /* UnitedReservationViewerApp.swift in Sources */,
+				F50814362CE2966000C8FC8F /* HomeView.swift in Sources */,
+				F50814382CE296CA00C8FC8F /* ReservationStore.swift in Sources */,
 				F5DD6F8B2CE1E4A400D6A3CE /* GetReservationData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,8 +296,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,8 +325,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
