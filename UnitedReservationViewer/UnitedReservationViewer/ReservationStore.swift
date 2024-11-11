@@ -45,7 +45,6 @@ extension UserDefaults {
                           let date2 = dateFormatter.date(from: dateString2) else {
                         return false
                     }
-                    print("ds1: \(dateString1)\nds2: \(dateString2)\nd1: \(date1)\nd2: \(date2)")
                     return date1 < date2
                 }
                 return sortedValues
@@ -67,7 +66,6 @@ extension UserDefaults {
                           let date2 = dateFormatter.date(from: dateString2) else {
                         return false
                     }
-                    print("ds1: \(dateString1)\nds2: \(dateString2)\nd1: \(date1)\nd2: \(date2)")
                     return date1 < date2
                 }
                 let data = try encoder.encode(sortedValues)
