@@ -1,0 +1,3 @@
+reverse engineered United's PNR data API because i don't like the ads in the official app. this is completely useless in its current state.
+
+future: implement seat selection and other features, but those APIs have marginally better security.
